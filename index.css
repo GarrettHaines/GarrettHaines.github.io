@@ -24,6 +24,11 @@
 	-ms-text-size-adjust: none;
 }
 
+img {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 h1 {
 	font-size: 52px;
 }
@@ -46,11 +51,13 @@ html, body {
 	-moz-text-size-adjust: none;
 	-ms-text-size-adjust: none;
 	height: 100%;
-	background-color: #fafcfb;
 }
 
 body {
 	margin: 0px;
+	background-color: #fafcfb;
+	overflow-x: hidden;
+	max-width: 100%;
 }
 
 a {
@@ -86,7 +93,7 @@ a:hover {
 }
 
 .container {
-	width: 46%;
+	width: 44%;
 	text-align: center;
 	margin: 0 auto;
 	margin-top: -80px;
