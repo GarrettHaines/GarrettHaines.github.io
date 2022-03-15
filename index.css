@@ -1,0 +1,87 @@
+/* Tahoma font imported */
+@font-face {
+	font-family: Tahoma;
+	src: url(../fonts/tahoma.ttf);
+}
+
+@font-face {
+	font-family: Tahoma;
+	src: url(../fonts/tahomabd.ttf);
+	font-weight: bold;
+}
+
+
+
+
+/*********************** Global settings ***********************/
+* {
+	font-family: Tahoma;
+	text-decoration: none;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+html, body {
+	text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	background-color: #fff;
+}
+
+a {
+	color: #333;
+	opacity: 1.0;
+	transition: .5s;
+	text-size-adjust: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+}
+
+input {
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+a:hover {
+	opacity: 0.6;
+}
+
+/** Screen size adjustments for various platforms (desktop/mobile) **/
+@media (min-width: 858px) {
+    a {
+        font-size: 14px;
+    }
+}
+ 
+@media (min-width: 780px) {
+    a {
+        font-size: 14px;
+    }
+}
+ 
+@media (min-width: 702px) {
+    a {
+        font-size: 14px;
+    }
+}
+ 
+@media (min-width: 624px) {
+    a {
+        font-size: 14px;
+    }
+}
+ 
+@media (max-width: 623px) {
+    a {
+        font-size: 14px;
+    }
+}
