@@ -1,12 +1,12 @@
 /* Tahoma font imported */
 @font-face {
 	font-family: Tahoma;
-	src: url(../fonts/tahoma.ttf);
+	src: url(tahoma.ttf);
 }
 
 @font-face {
 	font-family: Tahoma;
-	src: url(../fonts/tahomabd.ttf);
+	src: url(tahomabd.ttf);
 	font-weight: bold;
 }
 
