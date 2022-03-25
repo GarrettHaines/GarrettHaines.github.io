@@ -17,11 +17,11 @@
 * {
 	font-family: Tahoma;
 	text-decoration: none;
-	color: #333;
 	text-size-adjust: none;
 	-webkit-text-size-adjust: none;
 	-moz-text-size-adjust: none;
 	-ms-text-size-adjust: none;
+	color: #333;
 }
 
 img {
@@ -34,7 +34,7 @@ h1 {
 }
 
 h2 {
-	font-size: 42px;
+	font-size: 38px;
 }
 
 h3 {
@@ -46,11 +46,13 @@ h4 {
 }
 
 html, body {
+    overflow-x: hidden;
+    position: relative;
 	text-size-adjust: none;
 	-webkit-text-size-adjust: none;
 	-moz-text-size-adjust: none;
 	-ms-text-size-adjust: none;
-	height: 100%;
+    height: 100%;
 }
 
 body {
@@ -76,6 +78,7 @@ a:hover {
 .heading {
 	width: 700px;
 	margin: 0 auto;
+	margin-top: 20px;
 }
 
 .me {
@@ -88,14 +91,14 @@ a:hover {
 	margin: -40px 40px 0px 0px;
 	height: 200px;
 	opacity: 0.96;
-	background-color: #21cc68;
+	background-color: #669969;
 }
 
 .container {
 	width: 850px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -80px;
+	margin-top: -85px;
 }
 
 .project {
@@ -108,9 +111,10 @@ a:hover {
 	width: 340px;
 	float: right;
 	border-radius: 5px;
-	-webkit-box-shadow: 0px 3px 14px 5px rgba(0,0,0,0.02);
-	box-shadow: 0px 3px 13px 5px rgba(0,0,0,0.02);
+	-webkit-box-shadow: 0px 3px 14px 5px rgba(0,0,0,0.005);
+	box-shadow: 0px 3px 13px 5px rgba(0,0,0,0.005);
 }
+
 
 .link-button {
 	background-color: #669969;
@@ -135,6 +139,15 @@ a:hover {
 	height: 25px;
 }
 
+.link-box {
+	border-radius: 5px;
+	padding: 12px; 
+	width: 70px;
+	font-size: 17px;
+	background-color: #669969;
+	color: white;
+	display: inline-block;
+}
 
 
 
