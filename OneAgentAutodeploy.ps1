@@ -25,7 +25,7 @@ function deploy {
 	Invoke-Expression -Command ".\Dynatrace-OneAgent-Installer-Windows.exe --set-infra-only=false --set-app-log-content-access=true --set-host-group=$($hostGroup) --quiet"
 	
 	echo "Installation complete."
-	Remove-Item ".\Dynatrace-OneAgent-Installer-Windows.exe" -Recurse -force -verbose
+	echo "OneAgent has been successfully deployed on this device to the $($hostGroup) host group."
 }
 
 
