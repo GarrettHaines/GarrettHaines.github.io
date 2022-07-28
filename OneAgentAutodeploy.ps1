@@ -31,8 +31,8 @@ Add-Type -AssemblyName "PresentationFramework"
 $alreadyInstalled = Get-WmiObject win32_product -filter "Name like 'Dynatrace OneAgent'"
 
 if ($alreadyInstalled) {
-	$caption = "*** IT APPEARS THIS IS A FACTORY KEY ***"  
-   	$message = "Are you Sure You Want To Proceed:"
+	$caption = "*** OneAgent Already Installed ***"  
+   	$message = "OneAgent is already installed on this device. Would you like to reinstall OneAgent and overwrite existing local data?"
 	
 	$continue = "No"
 	$continue = [System.Windows.MessageBox]::Show($message, $caption, 'YesNo');
