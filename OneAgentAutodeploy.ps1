@@ -18,9 +18,9 @@ $alreadyInstalled = Get-WmiObject win32_product -filter "Name like 'Dynatrace On
 
 if ($alreadyInstalled) {
 	$continue = "Yes"
-	$continue = [System.Windows.MessageBox]::Show(", $caption, 'YesNo');
+	$continue = [System.Windows.MessageBox]::Show($message, $caption, 'YesNo');
 	
-	$caption = "IT APPEARS THIS IS A FACTORY KEY"  
+	$caption = "*** IT APPEARS THIS IS A FACTORY KEY ***"  
    	$message = "Are you Sure You Want To Proceed:"
 	 
 	if ($continue -eq 'Yes') {
