@@ -23,7 +23,9 @@ function deploy {
 	# Run file and begin installation
 	echo "Installing OneAgent..."
 	Invoke-Expression -Command ".\Dynatrace-OneAgent-Installer-Windows.exe --set-infra-only=false --set-app-log-content-access=true --set-host-group=$($hostGroup) --quiet"
+	
 	echo "Installation complete."
+	Remove-Item .\Dynatrace-OneAgent-Installer-Windows.exe -Force
 }
 
 
@@ -31,8 +33,8 @@ Add-Type -AssemblyName "PresentationFramework"
 $alreadyInstalled = Get-WmiObject win32_product -filter "Name like 'Dynatrace OneAgent'"
 
 if ($alreadyInstalled) {
-	$caption = "*** OneAgent Already Installed ***"  
-   	$message = "OneAgent is already installed on this device. Would you like to reinstall OneAgent and overwrite existing local data?"
+	$caption = "OneAgent Already Installed"  
+   	$message = "OneAgent is already installed on this device. Would you like to reinstall the program and overwrite your existing local data?"
 	
 	$continue = "No"
 	$continue = [System.Windows.MessageBox]::Show($message, $caption, 'YesNo');
