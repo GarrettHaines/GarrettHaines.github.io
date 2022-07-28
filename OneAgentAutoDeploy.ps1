@@ -1,3 +1,5 @@
+# Dynatrace OneAgent AutoDeploy
+
 # YOUR host group
 $hostGroup = "AutoDeploy"
 
