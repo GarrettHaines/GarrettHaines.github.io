@@ -10,7 +10,7 @@ $tenantID = "dkz99748"
 $tenantURL = "https://$($tenantID).sprint.dynatracelabs.com"
 
 # YOUR token
-$token = "dt0c01.ZLABM3EQTSL7CRIFVTOM6667.WZHKGFVVF6IEXAQLI7GM4QUMWNFX2RKHSEWCRE6RGWASCI2A7ZFQC5RHK7ON3DAQ"
+$token = $args[0]
 
 
 
