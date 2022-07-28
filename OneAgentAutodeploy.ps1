@@ -9,7 +9,7 @@ Add-Type -AssemblyName 'PresentationFramework'
 $hostGroup = "Autodeploy"
 
 # YOUR tenant ID
-$tenantID = "dkz99748"
+$tenantID = "https://dkz99748.sprint.dynatracelabs.com"
 
 # YOUR token
 $token = "dt0c01.ZLABM3EQTSL7CRIFVTOM6667.WZHKGFVVF6IEXAQLI7GM4QUMWNFX2RKHSEWCRE6RGWASCI2A7ZFQC5RHK7ON3DAQ"
@@ -19,7 +19,7 @@ $token = "dt0c01.ZLABM3EQTSL7CRIFVTOM6667.WZHKGFVVF6IEXAQLI7GM4QUMWNFX2RKHSEWCRE
 function install {
 	# Download Dynatrace OneAgent installer for Windows
 	Invoke-Expression -Command "[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12;
-								Invoke-WebRequest -Uri 'https://$($tenantID).sprint.dynatracelabs.com/api/v1/deployment/installer/agent/windows/default/latest?arch=x86&flavor=default'
+								Invoke-WebRequest -Uri '$($tenantID)/api/v1/deployment/installer/agent/windows/default/latest?arch=x86&flavor=default'
 										  -Headers @{ 'Authorization' = 'Api-Token $($token)' }
 										  -OutFile 'Dynatrace-OneAgent-Installer-Windows.exe'"
 
