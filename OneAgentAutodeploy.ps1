@@ -28,11 +28,11 @@ function install {
 $alreadyInstalled = Get-WmiObject win32_product -filter "Name like 'Dynatrace OneAgent'"
 
 if ($alreadyInstalled) {
-	$continue = "Yes"
-	$continue = [System.Windows.MessageBox]::Show($message, $caption, 'YesNo');
-	
 	$caption = "*** IT APPEARS THIS IS A FACTORY KEY ***"  
    	$message = "Are you Sure You Want To Proceed:"
+	
+	$continue = "Yes"
+	$continue = [System.Windows.MessageBox]::Show($message, $caption, 'YesNo');
 	 
 	if ($continue -eq 'Yes') {
 		install
