@@ -1,4 +1,5 @@
-# Dynatrace OneAgent AutoDeploy
+# Dynatrace OneAgent Autodeploy
+# Garrett Haines (Sprint)
 
 # YOUR host group
 $hostGroup = "Autodeploy"
