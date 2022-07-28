@@ -5,8 +5,9 @@
 # YOUR host group
 $hostGroup = "Autodeploy"
 
-# YOUR tenant ID
-$tenantID = "https://dkz99748.sprint.dynatracelabs.com"
+# YOUR tenant ID and URL
+$tenantID = "dkz99748"
+$tenantURL = "https://$($tenantID).sprint.dynatracelabs.com"
 
 # YOUR token
 $token = "dt0c01.ZLABM3EQTSL7CRIFVTOM6667.WZHKGFVVF6IEXAQLI7GM4QUMWNFX2RKHSEWCRE6RGWASCI2A7ZFQC5RHK7ON3DAQ"
@@ -22,7 +23,7 @@ function deploy {
 	Invoke-Expression -Command ".\Dynatrace-OneAgent-Installer-Windows.exe --set-infra-only=false --set-app-log-content-access=true --set-host-group=$($hostGroup) --quiet"
 }
 
-Add-Type -AssemblyName 'PresentationFramework'
+Add-Type -AssemblyName "PresentationFramework"
 
 $alreadyInstalled = Get-WmiObject win32_product -filter "Name like 'Dynatrace OneAgent'"
 
@@ -30,7 +31,7 @@ if ($alreadyInstalled) {
 	$caption = "*** IT APPEARS THIS IS A FACTORY KEY ***"  
    	$message = "Are you Sure You Want To Proceed:"
 	
-	$continue = "Yes"
+	$continue = "No"
 	$continue = [System.Windows.MessageBox]::Show($message, $caption, 'YesNo');
 	 
 	if ($continue -eq 'Yes')
