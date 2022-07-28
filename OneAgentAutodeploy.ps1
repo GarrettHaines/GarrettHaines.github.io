@@ -20,7 +20,7 @@ if ($alreadyInstalled) {
 	$continue = "Yes"
 	$continue = [System.Windows.MessageBox]::Show(", $caption, 'YesNo');
 	
-	$caption = "*** IT APPEARS THIS IS A FACTORY KEY ***"    
+	$caption = "IT APPEARS THIS IS A FACTORY KEY"  
    	$message = "Are you Sure You Want To Proceed:"
 	 
 	if ($continue -eq 'Yes') {
