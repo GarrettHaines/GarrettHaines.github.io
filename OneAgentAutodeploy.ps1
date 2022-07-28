@@ -1,7 +1,7 @@
 # Dynatrace OneAgent AutoDeploy
 
 # YOUR host group
-$hostGroup = "AutoDeploy"
+$hostGroup = "Autodeploy"
 
 # YOUR tenant ID
 $tenantID = "dkz99748"
