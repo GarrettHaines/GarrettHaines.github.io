@@ -82,8 +82,10 @@ a:hover {
 .heading {
 	width: 800px;
 	margin: 0 auto;
-	margin-top: 20px;
 	padding-left: 120px;
+    -webkit-transform: scale(0.8);
+       -moz-transform: scale(0.8);
+            transform: scale(0.8);
 }
 
 .me {
@@ -103,52 +105,63 @@ a:hover {
 	width: 850px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -85px;
+	margin-top: -185px;
 	background-color: rgba(35, 36, 32, 0.04);
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
+    -webkit-transform: scale(0.67);
+       -moz-transform: scale(0.67);
+            transform: scale(0.67);
 }
 
 .container-medium {
 	width: 675px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -85px;
+	margin-top: -185px;
 	background-color: rgba(35, 36, 32, 0.04);
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 10px;
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
+    -webkit-transform: scale(0.67);
+       -moz-transform: scale(0.67);
+            transform: scale(0.67);
 }
 
 .container-small {
 	width: 450px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -85px;
+	margin-top: -175px;
 	background-color: rgba(35, 36, 32, 0.04);
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
+    -webkit-transform: scale(0.67);
+       -moz-transform: scale(0.67);
+            transform: scale(0.67);
 }
 
 .container-smallest {
 	width: 300px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -85px;
+	margin-top: -165px;
 	background-color: rgba(35, 36, 32, 0.04);
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
+    -webkit-transform: scale(0.6);
+       -moz-transform: scale(0.6);
+            transform: scale(0.6);
 }
 
 .project {
