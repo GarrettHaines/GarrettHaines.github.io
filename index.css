@@ -110,6 +110,10 @@ a:hover {
     -webkit-transform: scale(0.67);
        -moz-transform: scale(0.67);
             transform: scale(0.67);
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .container {
