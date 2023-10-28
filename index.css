@@ -107,7 +107,7 @@ a:hover {
 	width: 850px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -185px;
+	margin-top: -65px;
     -webkit-transform: scale(0.67);
        -moz-transform: scale(0.67);
             transform: scale(0.67);
@@ -149,7 +149,7 @@ a:hover {
 	width: 450px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -175px;
+	margin-top: -185px;
 	background-color: rgba(255, 255, 255, 0.3);
 	padding-top: 20px;
 	padding-bottom: 20px;
@@ -162,7 +162,7 @@ a:hover {
 	width: 300px;
 	text-align: center;
 	margin: 0 auto;
-	margin-top: -165px;
+	margin-top: -185px;
 	background-color: rgba(255, 255, 255, 0.3);
 	padding-top: 20px;
 	padding-bottom: 20px;
