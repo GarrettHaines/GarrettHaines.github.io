@@ -138,9 +138,6 @@ a:hover {
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
-    -webkit-transform: scale(0.67);
-       -moz-transform: scale(0.67);
-            transform: scale(0.67);
 }
 
 .container-small {
@@ -154,9 +151,6 @@ a:hover {
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
-    -webkit-transform: scale(0.67);
-       -moz-transform: scale(0.67);
-            transform: scale(0.67);
 }
 
 .container-smallest {
@@ -170,9 +164,6 @@ a:hover {
 	padding-left: 40px;
 	padding-right: 40px;
 	border-radius: 20px;
-    -webkit-transform: scale(0.6);
-       -moz-transform: scale(0.6);
-            transform: scale(0.6);
 }
 
 .project {
