@@ -162,6 +162,10 @@
     color:var(--ink-soft);margin:18px 0 22px;
   }
   .hero .role b{color:var(--orange-deep);font-weight:500;}
+  .hero .role .role-loc{white-space:nowrap;}
+  @media (max-width:600px){
+    .hero .role .role-sep{display:block;width:0;height:0;font-size:0;line-height:0;overflow:hidden;}
+  }
   .hero .lede{font-size:clamp(1.05rem,2.4vw,1.22rem);line-height:1.6;color:var(--ink-soft);max-width:34em;margin:0 0 30px;}
   .hero .lede .hl{color:var(--ink);border-bottom:2px solid rgba(190,69,31,.28);}
 
@@ -409,7 +413,7 @@
         </div>
         <div class="hero-text">
           <h1>Garrett Haines</h1>
-          <p class="role"><b>Software &amp; Cloud Engineering</b> &nbsp;·&nbsp; Salem, Oregon</p>
+          <p class="role"><b>Software &amp; Cloud Engineering</b><span class="role-sep"> &nbsp;·&nbsp; </span><span class="role-loc">Salem, Oregon</span></p>
           <p class="lede">For the past four years at <span class="hl">Dynatrace</span>, I've been the dedicated technical lead on a variety of enterprise and federal accounts, including <span class="hl">Amgen, the U.S. Social Security Administration, and Zurich Insurance</span>, driving delivery, partnering closely with clients, and building and deploying solutions to meet their needs.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#projects">
