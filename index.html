@@ -1,232 +1,746 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	<title>Garrett Haines</title>
-	<link rel="stylesheet" type="text/css" href="index.css" />
-	
-	<!-- Site logo browser icon (.ico)  -->
-	<link rel="icon" href="favicon.ico">
-	
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-RNCFTYHN8F"></script>
-	<script>
- 		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
- 		gtag('js', new Date());
-		gtag('config', 'G-RNCFTYHN8F');
-	</script>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Garrett Haines — Software & Cloud Engineering</title>
+<meta name="description" content="Garrett Haines is a software and cloud engineer in Salem, Oregon. He builds observability and cloud tooling for enterprise and federal teams — and works directly with the people who use it." />
+<meta name="author" content="Garrett Haines" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Garrett Haines — Software & Cloud Engineer" />
+<meta property="og:description" content="Software and cloud engineer in Salem, Oregon. Builds tooling for enterprise and federal teams — and works with the people who use it." />
+<meta property="og:url" content="https://garretthaines.info" />
+<meta property="og:image" content="https://garretthaines.info/img/moi.jpg" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,380;9..144,450;9..144,540;9..144,620&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:#FBF8F3;
+    --paper-2:#F4ECDF;
+    --card:#FFFFFF;
+    --ink:#1D1814;
+    --ink-soft:#463E36;
+    --muted:#867A6A;
+    --line:#E7DDCC;
+    --line-strong:#D8CBB4;
+    --orange:#BE451F;
+    --orange-deep:#9C3413;
+    --ember:#D8763F;
+    --evergreen:#1E4D39;
+    --evergreen-soft:#2C6049;
+    --radius:14px;
+    --maxw:1080px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  @media (max-width:600px){ body{font-size:16px;} }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:450;line-height:1.06;letter-spacing:-0.01em;margin:0;}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  @media (max-width:600px){ .wrap{padding:0 20px;} }
+
+  .mono{font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;}
+
+  /* section label */
+  .sec-label{
+    font-family:"JetBrains Mono",monospace;
+    font-size:12.5px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    display:flex;align-items:center;gap:12px;
+    margin-bottom:26px;
+  }
+  .sec-label::before{
+    content:"";width:26px;height:1px;background:var(--orange);
+    display:inline-block;
+  }
+  .sec-num{color:var(--orange);}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:60;
+    background:rgba(251,248,243,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s var(--ease), background .3s var(--ease);
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);}
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 28px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+  }
+  @media (max-width:600px){ .nav-inner{padding:14px 20px;} }
+  .brand{
+    font-family:"Fraunces",serif;font-weight:540;font-size:19px;letter-spacing:-0.01em;
+    text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:10px;
+    transition:opacity .3s var(--ease),transform .3s var(--ease);
+  }
+  .brand.brand-hidden{opacity:0;transform:translateY(-6px);pointer-events:none;}
+  .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--orange);display:inline-block;margin-bottom:2px;}
+  nav.links{display:flex;gap:30px;align-items:center;}
+  nav.links a{
+    text-decoration:none;color:var(--ink-soft);font-size:14.5px;font-weight:450;
+    letter-spacing:.01em;position:relative;padding:4px 0;transition:color .2s var(--ease);
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:1.5px;width:0;background:var(--orange);
+    transition:width .25s var(--ease);
+  }
+  nav.links a:hover{color:var(--ink);}
+  nav.links a:hover::after,nav.links a.active::after{width:100%;}
+  nav.links a.active{color:var(--ink);}
+
+  .nav-toggle{display:none;background:var(--line-strong);border:none;border-radius:10px;
+    padding:10px 11px;cursor:pointer;color:var(--ink);
+    transition:background .2s var(--ease),color .2s var(--ease),transform .15s var(--ease);}
+  .nav-toggle:hover{background:var(--ink);color:var(--paper);}
+  .nav-toggle:active{transform:scale(.95);}
+  .nav-toggle svg{display:block;}
+
+  @media (max-width:760px){
+    nav.links{
+      position:fixed;inset:0 0 auto 0;top:0;background:var(--paper);
+      flex-direction:column;align-items:flex-start;gap:6px;
+      padding:88px 28px 30px;border-bottom:1px solid var(--line);
+      transform:translateY(-100%);transition:transform .38s var(--ease);
+      box-shadow:0 24px 50px -28px rgba(40,30,20,.28);
+    }
+    nav.links.open{transform:translateY(0);}
+    nav.links a{font-size:20px;font-family:"Fraunces",serif;color:var(--ink);padding:10px 0;width:100%;}
+    nav.links a::after{display:none;}
+    .nav-toggle{display:inline-flex;z-index:70;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:74px 0 64px;}
+  @media (max-width:760px){ .hero{padding:48px 0 44px;} }
+  .hero-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:54px;align-items:center;}
+  .hero-text{order:1;}
+  @media (max-width:860px){
+    .hero-grid{display:block;}
+    .hero-grid::after{content:"";display:block;clear:both;}
+  }
+
+  .status{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--ink-soft);border:1px solid var(--line-strong);
+    border-radius:100px;padding:7px 14px;background:var(--card);margin-bottom:26px;
+  }
+  .status .pulse{position:relative;width:8px;height:8px;}
+  .status .pulse i{position:absolute;inset:0;border-radius:50%;background:var(--evergreen-soft);}
+  .status .pulse i.ring{animation:pulse 2.4s var(--ease) infinite;opacity:.5;}
+  @keyframes pulse{0%{transform:scale(1);opacity:.5;}70%{transform:scale(2.6);opacity:0;}100%{opacity:0;}}
+  @media (prefers-reduced-motion:reduce){ .status .pulse i.ring{animation:none;} }
+
+  .hero h1{font-size:clamp(2.7rem,7vw,4.6rem);font-weight:450;margin:0 0 4px;}
+  .hero .role{
+    font-family:"JetBrains Mono",monospace;font-size:14px;letter-spacing:.04em;
+    color:var(--ink-soft);margin:18px 0 22px;
+  }
+  .hero .role b{color:var(--orange-deep);font-weight:500;}
+  .hero .lede{font-size:clamp(1.05rem,2.4vw,1.22rem);line-height:1.6;color:var(--ink-soft);max-width:34em;margin:0 0 30px;}
+  .hero .lede .hl{color:var(--ink);border-bottom:2px solid rgba(190,69,31,.28);}
+
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center;}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;text-decoration:none;
+    font-size:14.5px;font-weight:500;letter-spacing:.01em;padding:12px 20px;border-radius:100px;
+    transition:transform .2s var(--ease), background .2s var(--ease), box-shadow .2s var(--ease), border-color .2s var(--ease);
+  }
+  .btn-primary{background:var(--orange);color:#fff;box-shadow:0 12px 26px -14px rgba(190,69,31,.8);}
+  .btn-primary:hover{background:var(--orange-deep);transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--line-strong);color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-1px);}
+  .btn svg{width:16px;height:16px;}
+
+  /* portrait */
+  .portrait-wrap{position:relative;justify-self:end;width:100%;max-width:340px;order:2;}
+  @media (max-width:860px){
+    .portrait-wrap{float:right;width:auto;max-width:none;margin:4px 0 16px 30px;}
+    .portrait{width:205px;}
+  }
+  @media (max-width:600px){
+    .portrait-wrap{margin:5px 0 12px 18px;}
+    .portrait{width:146px;}
+    .portrait-wrap::before{right:-9px;top:-9px;}
+    .portrait-cap{margin-top:9px;font-size:10.5px;}
+    .hero h1{font-size:2.45rem;}
+  }
+  .portrait{
+    position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;
+    background:var(--paper-2);border:1px solid var(--line);
+    box-shadow:0 30px 60px -34px rgba(50,34,20,.42);
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;object-position:center 28%;}
+  .portrait .fallback{
+    position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+    background:radial-gradient(120% 120% at 30% 20%, #2c6049 0%, #1e4d39 55%, #173d2d 100%);
+    color:#f3ede1;font-family:"Fraunces",serif;font-size:84px;font-weight:450;letter-spacing:.02em;
+  }
+  .portrait.is-missing img{display:none;}
+  .portrait.is-missing .fallback{display:flex;}
+  /* little accent tab behind photo */
+  .portrait-wrap::before{
+    content:"";position:absolute;right:-14px;top:-14px;width:64%;height:64%;
+    border:1.5px solid var(--orange);border-radius:18px;z-index:-1;opacity:.55;
+  }
+  .portrait-cap{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;
+    color:var(--muted);margin-top:14px;text-transform:uppercase;display:flex;align-items:center;gap:8px;
+  }
+  .portrait-cap::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--orange);}
+
+  /* meta strip under hero */
+  .meta-strip{
+    margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    display:grid;grid-template-columns:repeat(3,1fr);
+  }
+  @media (max-width:680px){ .meta-strip{grid-template-columns:1fr;} }
+  .meta-strip div{padding:22px 4px;}
+  .meta-strip div + div{border-left:1px solid var(--line);padding-left:24px;}
+  @media (max-width:680px){
+    .meta-strip div + div{border-left:none;border-top:1px solid var(--line);padding-left:4px;}
+  }
+  .meta-strip .k{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+  .meta-strip .v{font-size:15.5px;color:var(--ink);line-height:1.45;}
+  .meta-strip .v b{font-weight:500;}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0;scroll-margin-top:78px;}
+  @media (max-width:600px){ section{padding:60px 0;} }
+  .section-alt{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  .lead-h2{font-size:clamp(1.9rem,4.6vw,2.7rem);max-width:16em;margin-bottom:18px;}
+
+  /* about */
+  .about-grid{display:block;}
+  .about-grid p{color:var(--ink-soft);margin:0 0 18px;font-size:1.06rem;}
+  .about-grid p:last-child{margin-bottom:0;}
+  .about-grid .lead-col p:first-child{color:var(--ink);font-size:1.18rem;line-height:1.55;}
+  .about-aside{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 22px;
+  }
+  .about-aside h3{font-size:1.05rem;font-family:"Inter",sans-serif;font-weight:600;margin-bottom:16px;letter-spacing:.01em;}
+  .fact{display:flex;gap:14px;padding:12px 0;border-top:1px solid var(--line);}
+  .fact:first-of-type{border-top:none;padding-top:2px;}
+  .fact .fk{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:88px;flex:none;padding-top:3px;}
+  .fact .fv{font-size:15px;color:var(--ink);}
+  .fact .fv a{color:var(--orange-deep);text-decoration:none;border-bottom:1px solid rgba(156,52,19,.3);}
+  .fact .fv a:hover{border-bottom-color:var(--orange-deep);}
+
+  /* experience */
+  .xp{border-top:1px solid var(--line-strong);}
+  .xp-head{display:flex;justify-content:space-between;align-items:baseline;gap:18px;padding-top:26px;flex-wrap:wrap;}
+  .xp-head h3{font-size:1.6rem;}
+  .xp-head .where{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;}
+  .xp-head .role-t{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--orange-deep);letter-spacing:.02em;}
+  .xp-head .yr{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);letter-spacing:.04em;}
+  .xp-body{margin-top:24px;}
+  ul.bullets{list-style:none;margin:0;padding:0;}
+  .xp-body ul.bullets{column-count:2;column-gap:48px;}
+  @media (max-width:760px){ .xp-body ul.bullets{column-count:1;} }
+  ul.bullets li{position:relative;padding:0 0 16px 24px;color:var(--ink-soft);font-size:1.02rem;line-height:1.55;break-inside:avoid;-webkit-column-break-inside:avoid;}
+  ul.bullets li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:1.5px;background:var(--orange);}
+  ul.bullets li b{color:var(--ink);font-weight:550;}
+
+  .clients-row{margin-top:36px;padding-top:28px;border-top:1px solid var(--line);}
+  .clients-row .ch{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+  .clients-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media (max-width:760px){ .clients-grid{grid-template-columns:1fr;} }
+  .client-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px 22px;transition:border-color .2s var(--ease),transform .2s var(--ease);}
+  .client-card:hover{border-color:var(--line-strong);transform:translateY(-2px);}
+  .client-card .cn{font-size:1.05rem;color:var(--ink);font-weight:550;line-height:1.25;margin-bottom:6px;}
+  .client-card .cd{font-size:13px;color:var(--muted);margin-bottom:16px;}
+  .client-card .cy{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--orange-deep);letter-spacing:.03em;}
+
+  .edu{margin-top:46px;padding-top:26px;border-top:1px solid var(--line-strong);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:baseline;}
+  .edu .ed-deg{font-family:"Fraunces",serif;font-size:1.25rem;}
+  .edu .ed-sub{color:var(--muted);font-size:14.5px;margin-top:4px;}
+  .edu .ed-school{font-size:14.5px;color:var(--ink-soft);}
+  .edu .ed-yr{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--muted);}
+  .edu-right{text-align:right;}
+  .edu.edu-card{margin-top:0;padding-top:0;border-top:none;}
+  .edu-seal{display:none;}
+  .edu-content{flex:1;display:flex;justify-content:space-between;align-items:baseline;gap:18px;flex-wrap:wrap;}
+  @media (max-width:600px){
+    .edu.edu-card{display:flex;align-items:flex-start;gap:18px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;}
+    .edu-seal{display:flex;width:42px;height:42px;flex:none;border-radius:11px;align-items:center;justify-content:center;background:rgba(190,69,31,.08);color:var(--orange);border:1px solid rgba(190,69,31,.2);}
+    .edu-seal svg{width:21px;height:21px;}
+    .edu-content{flex:1;flex-direction:column;justify-content:flex-start;align-items:flex-start;gap:4px;}
+    .edu-right{text-align:left;display:flex;align-items:baseline;flex-wrap:wrap;}
+    .edu .ed-deg{font-family:"Inter",sans-serif;font-weight:600;font-size:1.1rem;color:var(--ink);letter-spacing:.01em;}
+    .edu .ed-sub{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--muted);letter-spacing:.02em;margin-top:4px;}
+    .edu .ed-school{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--muted);letter-spacing:.02em;}
+    .edu .ed-yr{font-size:14px;color:var(--muted);margin-top:0;}
+    .edu .ed-yr::before{content:"·";color:var(--muted);margin:0 7px;}
+  }
+
+  /* projects */
+  .proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  @media (max-width:760px){ .proj-grid{grid-template-columns:1fr;} }
+  .card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 24px;display:flex;flex-direction:column;
+    transition:transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s var(--ease);
+    position:relative;text-decoration:none;color:inherit;cursor:pointer;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 28px 50px -32px rgba(50,34,20,.4);border-color:var(--line-strong);}
+  .card .ptop{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:14px;}
+  .card h3{font-size:1.32rem;}
+  .card .badge{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--evergreen);border:1px solid rgba(30,77,57,.3);border-radius:100px;padding:4px 10px;white-space:nowrap;background:rgba(30,77,57,.05);}
+  .card .arrow{color:var(--muted);transition:transform .25s var(--ease),color .25s var(--ease);}
+  .card:hover .arrow{transform:translate(3px,-3px);color:var(--orange);}
+  .card p{color:var(--ink-soft);font-size:.99rem;line-height:1.55;margin:0 0 18px;}
+  .card .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;}
+  .card .tags span{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--ink-soft);
+    background:var(--paper-2);border:1px solid var(--line);border-radius:7px;padding:4px 9px;}
+  .card .links{margin-top:16px;display:flex;gap:18px;}
+  .card .links a{font-size:13px;color:var(--orange-deep);text-decoration:none;font-family:"JetBrains Mono",monospace;letter-spacing:.02em;border-bottom:1px solid rgba(156,52,19,.3);padding-bottom:1px;}
+  .card .links a:hover{border-bottom-color:var(--orange-deep);}
+
+  /* skills and credentials */
+  .skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px 48px;}
+  @media (max-width:820px){ .skills-grid{grid-template-columns:1fr;gap:24px;} }
+  .skill-row{border-top:1px solid var(--line);padding-top:18px;}
+  .skill-row .sk{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-deep);margin-bottom:12px;}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;}
+  .chips span{font-size:14px;color:var(--ink);background:var(--card);border:1px solid var(--line-strong);
+    border-radius:8px;padding:6px 12px;transition:border-color .2s var(--ease),color .2s var(--ease);}
+  .chips span:hover{border-color:var(--orange);color:var(--orange-deep);}
+
+  /* certs */
+  .cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:6px;}
+  @media (max-width:680px){ .cert-grid{grid-template-columns:1fr;} }
+  .cert{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;}
+  .cert .seal{width:42px;height:42px;flex:none;border-radius:11px;display:flex;align-items:center;justify-content:center;
+    background:rgba(190,69,31,.08);color:var(--orange);border:1px solid rgba(190,69,31,.2);}
+  .cert .seal svg{width:20px;height:20px;}
+  .cert h3{font-size:1.1rem;font-family:"Inter",sans-serif;font-weight:600;margin-bottom:4px;}
+  .cert p{margin:0;font-size:14px;color:var(--muted);font-family:"JetBrains Mono",monospace;letter-spacing:.02em;}
+
+  /* contact */
+  .contact-inner{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;}
+  @media (max-width:820px){ .contact-inner{grid-template-columns:1fr;gap:32px;} }
+  .contact-inner h2{font-size:clamp(2rem,5vw,3rem);margin-bottom:18px;line-height:1.04;}
+  .contact-inner h2 em{font-style:italic;color:var(--orange);}
+  .csub{color:var(--ink-soft);font-size:1.08rem;max-width:30em;}
+  .contact-links{display:flex;flex-direction:column;gap:2px;}
+  .clink{display:flex;align-items:center;justify-content:space-between;gap:16px;text-decoration:none;color:var(--ink);
+    padding:18px 4px;border-top:1px solid var(--line-strong);transition:padding .25s var(--ease),color .2s var(--ease);}
+  .clink:last-child{border-bottom:1px solid var(--line-strong);}
+  .clink:hover{padding-left:14px;color:var(--orange-deep);}
+  .clink .cl-k{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);width:74px;flex:none;}
+  .clink .cl-v{font-size:1.05rem;flex:1;}
+  .clink .arrow{color:var(--muted);transition:transform .25s var(--ease),color .2s var(--ease);}
+  .clink:hover .arrow{transform:translateX(4px);color:var(--orange);}
+
+  /* footer */
+  footer{padding:40px 0;border-top:1px solid var(--line);}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;}
+  .foot-inner .fc{font-size:13.5px;color:var(--muted);}
+  .foot-inner .fb{font-family:"Fraunces",serif;font-size:17px;font-weight:540;}
+  .to-top{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
+  .to-top:hover{color:var(--orange-deep);}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+  .reveal.in{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} html{scroll-behavior:auto;} }
+
+  ::selection{background:rgba(190,69,31,.18);}
+  :focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:4px;}
+</style>
 </head>
-
 <body>
-	<img src="https://uploads-ssl.webflow.com/5f4e8114a9640d4aa2c637c4/5fc5ab2cd088cd080fadb1f8_monstera%20adansonii-plant-export.png" style="z-index: -200; display: inline; margin: -81% 0% 0% 44%; opacity: 0.7; position: absolute; width: auto; height: auto; overflow-x: hidden;" />
 
-	<div class="heading">
-		<div class="me">
-			<img src="Moi.jpg" />
-		</div>
-		
-		<div style="display: inline-block;">
-					<div style="margin: 140px 0px 0px 0px">
-						<br>
-						<h1 style="margin: 30px 0px 0px 0px">Garrett Haines</h1><br><br>
-						<p style="margin: -28px 0px 0px 5px;">El Dorado Hills, California</p>
-						<br><br>
-						<p style="margin: -29px 0px 10px 5px;">Software Engineering & Web Development</p>
-						<br>
-					</div>
-		</div>
-	</div>
-	
-	<br><br><br><br><br><br><br>
-	
-<div class="wrap" >
-	<div class="container-medium" >
-			<h2>E<span style="font-size: 32px">XPERIENCE</span></h2>
-			<div style="display: inline-block; margin-left: -25px; margin-top: -60px;">
-				<img src="Dynatrace.png" style="width: 105px;" />
-			</div>
-			<div style="text-align: left; margin-left: 15px; display: inline-block; position: relative; margin-top: -90px; top: -10px; position: relative;">
-				<h4>Dynatrace</h4>
-				<p style="margin-top: -25px">Software Engineering</p>
-				<p style="margin-top: -17px;">Contractor<span style="font-size: 11px; margin-left: 120px"><b>AT</b></span></p>
-				<p style="margin-top: -17px">2022 - Present</p>
-			</div>
-			<div style="display: inline-block;">
-				<img src="https://www.ssa.gov/themes/custom/ssa_core/logo.svg" style="width: 85px; margin-left: 44px; margin-right: 3px; margin-top: -40px;" />
-			</div>
-			<div style="text-align: left; margin-left: 15px; display: inline-block; top: -13px; position: relative;">
-				<h5 style="top: -25px">United States</h5><h4 style="margin-top: -25px">Social Security<br>Administration</h4>
-			</div>
-			<br><br>
-	</div>
-</div>
-	
-			
-			
-		
-	<br><br>
-			
-			
-		<div class="container">
-			<h2>P<span style="font-size: 32px">ROJECTS</span></h2>
-			
-			<div class="project">
-				<img style="margin: 71px 10px 0px 0px;" src="The Career Deer.jpg" />
-				<a href="https://thecareerdeer.com">
-					<div class="link-button">
-						<img src="https://cdn-icons-png.flaticon.com/512/61/61353.png" />
-					</div>
-						<h4 style="display: inline-block; position: absolute; margin: 10px 0px 0px 15px;">The Career Deer<br>&nbsp;</h4>
-				</a>
-				
-				<p style="margin: 14px 0px 0px 28px;">
-					This website uses a Google Firestore Database and<br>
-					Remotive's open source REST API to provide users with a<br>
-					feed of remote job postings. Users can create an<br>
-					account and save listings, as well as join<br>
-					community and company pages. <br><br>
-					Full Stack Web Development & REST API Integration (2022)<br><br>
-					JavaScript, Node.JS, Express, Webpack, Google Firebase
-				</p>
-			</div>
-						<br><br><br>
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand brand-hidden">Garrett Haines<span class="dot"></span></a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M0 1h20M0 7h20M0 13h20" stroke="currentColor" stroke-width="1.6"/></svg>
+    </button>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#work">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills-and-credentials">Skills & Credentials</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-			<div class="project">
-				<img style="margin: 68px 10px 0px 0px;" src="West Wares.jpg" />
-				<a href="https://westwares.com">
-					<div class="link-button">
-						<img src="https://cdn-icons-png.flaticon.com/512/61/61353.png"/>
-					</div>
-						<h4 style="display: inline-block; position: absolute; margin: 10px 0px 0px 15px;">West Wares<br>&nbsp;</h4>
-				</a>
-				
-				<p style="margin: 14px 0px 0px 28px;">
-					West Wares is an online retail shop that I have been<br>
-					working on as of late 2023. I am currently in the<br>
-					process of finalizing the frontend and setting up<br>
-					secure payments using Stripe.<br><br>
-					Reactive Full Stack Web Development in AWS (2023)<br><br>
-					Next.JS, React, AWS Amplify/API Gateway/Lambda/DynamoDB
-				</p>
-			</div>
-			<br><br><br>
-			<div class="project">
-				<img style="margin: 68px 10px 0px 0px;" src="Santa's Overnight Delivery.jpg" />
-				<a href="https://github.com/GarrettHaines/santas-overnight-delivery">
-					<div class="link-button">
-						<img src="https://cdn-icons-png.flaticon.com/512/61/61353.png"/>
-					</div>
-						<h4 style="display: inline-block; position: absolute; margin: 10px 0px 0px 15px;">Santa's Overnight Delivery<br>&nbsp;</h4>
-				</a>
-				
-				<p style="margin: 14px 0px 0px 28px;">
-					In this simple 2D game, you play as Santa Clause and<br>
-					your goal is to deliver as many gifts as possible to the<br>
-					houses without hitting obstacles along the way. The game<br>
-					records high scores and saves them locally on the player's<br>
-					machine.<br><br>
-					Game & GUI Application Development (2019)<br><br>
-					Java, Abstract Window Toolkit (AWT), Swing
-				</p>
-			</div>
-			<br><br><br>
-			
-			
-			<div class="project">
-				<img style="margin: 68px 10px 0px 0px;" src="Smart Garage Security Simulator.jpg" />
-				<a href="https://github.com/GarrettHaines/smart-garage-security-simulator">
-					<div class="link-button">
-						<img src="https://cdn-icons-png.flaticon.com/512/61/61353.png"/>
-					</div>
-						<h4 style="display: inline-block; position: absolute; margin: 10px 0px 0px 15px;">Smart Garage Security Simulator<br>&nbsp;</h4>
-				</a>
-				
-				<p style="margin: 14px 0px 0px 28px;">
-					A proposed "Smart Garage" security system is simulated<br>
-					to demonstrate IoT security procedures using dual<br>
-					authentication and descriptions of network system<br>
-					processes.<br><br>
-					Network/IoT Engineering (2021)<br><br>
-					Java<br><br>
-				</p>
-				<br>
-			</div>
-			
-		</div>
-			<br>
-		<div class="container" style="margin-top: -220px;">
-			<div style="position: relative; left: 50%; float: left;">
-				<div style="position: relative; left: -50%; float: left;">
-					<h2>A<span style="font-size: 32px">BOUT</span> M<span style="font-size: 32px">E</span></h2>
-				</div>
-			</div>
-			
-			<div style="text-align: left; margin: 0px 0px 0px 28px; display: inline-block;">
-				Hello! My name is Garrett Haines.<br><br>
-				I joined the Dynatrace team in 2022 as a software engineer. I am currently contracted by the US Social Security Administration (SSA). I assist their application teams in the implementation of software monitoring tools to achieve full-stack observability.
-				<br>
-				<img src="cats.jpg" style="display: inline-block; width: 36%; border-radius: 5px;" />
-				<p style="display: inline-block; margin-left: 4%; width: 59%;">
-					&nbsp;<br>
-					I currently live in El Dorado Hills in California, near Sacramento. I recently relocated to the west coast from Michigan.<br><br>
-					I am particularly interested in full stack software engineering and web development. I've created each of my sites, including this one, from scratch because I love the process of constructing applications that are both functional and aesthetically appealing.<br><br>
-					I also enjoy gardening, gymnastics, skateboarding, designing video games with Unity, music, and cooking.
-				</p>
-				<br><br><br>
-			
-			</div>
-		</div>
+<main id="top">
 
-			
-			
-			<br><br><br><br><br>
-			
-	<div class="wrap" >
-		<div class="container-small">	
-			<h2>C<span style="font-size: 32px">ONTACT</span> M<span style="font-size: 32px">E</span></h2>
-			<a href="mailto:garrett@garretthaines.info">
-				<div class="link-box">
-					Personal
-				</div>
-			</a>
-			&nbsp;&nbsp;&nbsp;
-			<a href="mailto:Garrett.Haines@dynatrace.com">
-				<div class="link-box">
-					Dynatrace
-				</div>
-			</a>
-			&nbsp;&nbsp;&nbsp;
-			<a href="mailto:Garrett.Haines@ssa.gov">
-				<div class="link-box">
-					SSA
-				</div>
-			</a>
-			
-			<br><br><br>
-		</div>
-	</div>
-		
-			<br><br><br><br><br><br><br><br><br>
-<div class="wrap" >
-		<div class="container-smallest">
-			<h2>L<span style="font-size: 32px">INKS</span></h2>
-			<a href="https://github.com/GarrettHaines">
-				<div class="link-box">
-					GitHub
-				</div>
-			</a>
-			&nbsp;&nbsp;&nbsp;
-			<a href="https://www.linkedin.com/in/garretthaines/">
-				<div class="link-box">
-					LinkedIn
-				</div>
-			</a>
-			<br><br><br>
-		</div>
-</div>
-			<br><br><br><br><br>
-		<img src="https://uploads-ssl.webflow.com/5f4e8114a9640d4aa2c637c4/5fc5ab2cd088cd080fadb1f8_monstera%20adansonii-plant-export.png" style="z-index: -200; display: inline; margin: -130% 0% 0% 72%; opacity: 0.7; position: absolute; overflow: hidden; overflow-y: hidden;" height="1200px" />
-		<img src="https://uploads-ssl.webflow.com/5f4e8114a9640d4aa2c637c4/5fc5ab2cd088cd080fadb1f8_monstera%20adansonii-plant-export.png" style="z-index: -200; display: inline; margin: -94% 0% 0% 72%; opacity: 0.7; position: absolute; width: auto; height: auto; overflow-x: hidden;" height="1200px" />
+  <!-- ================= HERO ================= -->
+  <section class="hero" style="padding-top:64px;">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="portrait-wrap">
+          <div class="portrait" id="portrait">
+            <img id="portraitImg" src="img/moi.jpg" alt="Garrett Haines" />
+            <div class="fallback">GH</div>
+          </div>
+        </div>
+        <div class="hero-text">
+          <h1>Garrett Haines</h1>
+          <p class="role"><b>Software &amp; Cloud Engineering</b> &nbsp;·&nbsp; Salem, Oregon</p>
+          <p class="lede">For the past four years at <span class="hl">Dynatrace</span>, I've been the dedicated technical lead on a variety of enterprise and federal accounts, including <span class="hl">Amgen, the U.S. Social Security Administration, and Zurich Insurance</span>, driving delivery, partnering closely with clients, and building and deploying solutions to meet their needs.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#projects">
+              See what I've built
+              <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a class="btn btn-ghost" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    
+      <!---
+      <div class="meta-strip">
+        <div>
+          <div class="k">Currently</div>
+          <div class="v"><b>Software Consultant</b> at Dynatrace — sole technical lead on enterprise &amp; federal accounts</div>
+        </div>
+        <div>
+          <div class="k">In practice</div>
+          <div class="v">Building internal apps, automating migrations, supporting proofs of concept, and advising the teams using it all</div>
+        </div>
+        <div>
+          <div class="k">Day to day</div>
+          <div class="v">TypeScript &amp; React · Python · AWS · PowerShell · Node.js</div>
+        </div>
+      </div>
+      -->
+    </div>
+  </section>
 
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-label"><span class="sec-num">01</span>&nbsp;/&nbsp;About</div>
+      <div class="about-grid">
+        <!-- ▼▼▼ EDIT ME: this is your personal "about" copy. Rewrite freely — the draft below is just a starting point that matches your real work. ▼▼▼ -->
+        <div class="lead-col reveal">
+          <p>I live in Salem, Oregon and work as Software Consultant at Dynatrace. I develop, deploy, and optimize software solutions that give customers deeper visibility into their cloud environments and applications.</p>
+          <p>I enjoy building things that outlast a single project — reusable internal apps, automation that removes manual and repetitive work, and solutions that make the next problem easier or eliminate it entirely. I like working through challenging technical problems and spend time on my own continuing to learn.</p>
+          <p>When I'm not working, I'm usually hiking somewhere in the Pacific Northwest or tending to my plant collection. I love Oregon but am open to relocating elsewhere on the West Coast if the right opportunity comes up.</p>
+        </div>
+        <!-- ▲▲▲ END EDIT ME ▲▲▲ -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK ================= -->
+  <section id="work" class="section-alt">
+    <div class="wrap">
+      <div class="sec-label"><span class="sec-num">02</span>&nbsp;/&nbsp;Experience</div>
+      <h2 class="lead-h2 reveal">Over four years as the dedicated technical lead on enterprise and federal accounts.</h2>
+
+      <div class="xp reveal">
+        <div class="xp-head">
+          <h3>Dynatrace</h3>
+          <div class="where">
+            <span class="role-t">Software Consultant</span>
+            <span class="yr">2022 — Present</span>
+          </div>
+        </div>
+        <div class="xp-body">
+          <ul class="bullets">
+            <li>Assigned as the <b>sole dedicated consultant</b> to one major customer at a time, leading hands-on technical delivery and client advisory for multi-million-dollar accounts.</li>
+            <li>Built <b>custom applications</b> to extend product functionality, designed for reuse and adopted by multiple clients.</li>
+            <li>Migrated software monitoring environments end to end using automated PowerShell scripting and Monaco configuration-as-code.</li>
+            <li>Supported pre-sales <b>proof of concepts</b>, presented <b>quarterly business reviews</b> to customer stakeholders, and translated platform capabilities into business outcomes for technical and non-technical audiences.</li>
+            <li>Triaged and resolved monitoring issues across distributed systems using root-cause analysis, log analysis, and diagnostic tools.</li>
+            <li>Entrusted by customers to work directly with their infrastructure and critical applications.</li>
+          </ul>
+        </div>
+        <div class="clients-row">
+          <div class="ch">Key client engagements</div>
+          <div class="clients-grid">
+            <div class="client-card">
+              <div class="cn">Zurich Insurance Group</div>
+              <div class="cd">Insurance · #209 in Global Fortune 500</div>
+              <div class="cy">2026 — Present</div>
+            </div>
+            <div class="client-card">
+              <div class="cn">Amgen</div>
+              <div class="cd">Biopharmaceutical · #127 in Fortune 500</div>
+              <div class="cy">2025 — 2026</div>
+            </div>
+            <div class="client-card">
+              <div class="cn">U.S. Social Security Administration</div>
+              <div class="cd">United States federal agency</div>
+              <div class="cy">2022 — 2025</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-label"><span class="sec-num">03</span>&nbsp;/&nbsp;Projects</div>
+      <h2 class="lead-h2 reveal">Things I've built at work and on my own time.</h2>
+
+      <div class="proj-grid">
+        <article class="card reveal" data-href="https://github.com/GarrettHaines/maintenance-window-manager">
+          <div class="ptop">
+            <h3>Maintenance Window Manager</h3>
+            <span class="arrow"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M4 13L13 4M13 4H6M13 4v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p>A Dynatrace AppEngine app for creating and managing maintenance windows at scale, extending product functionality with bulk operations and tagging workarounds to reliably suppress alerting on correlated entities. Built at a customer’s request and now used across multiple clients.</p>
+          <div class="tags"><span>React</span><span>TypeScript</span><span>Dynatrace AppEngine</span></div>
+          <div class="links"><a href="https://github.com/GarrettHaines/maintenance-window-manager" target="_blank" rel="noopener">Repository ↗</a></div>
+        </article>
+
+        <article class="card reveal" data-href="https://github.com/GarrettHaines/capacity-and-utilization">
+          <div class="ptop">
+            <h3>Capacity &amp; Utilization</h3>
+            <span class="badge">In development</span>
+          </div>
+          <p>A Dynatrace AppEngine app that compiles capacity and utilization reports across an environment for disk auditing, compute right-sizing, Kubernetes density, and scaling limits, helping teams identify where headroom exists and where it doesn’t. Currently in development for use across current and future clients.</p>
+          <div class="tags"><span>React</span><span>TypeScript</span><span>Observability</span></div>
+          <div class="links"><a href="https://github.com/GarrettHaines/capacity-and-utilization" target="_blank" rel="noopener">Repository ↗</a></div>
+        </article>
+
+        <article class="card reveal" data-href="https://thecareerdeer.com">
+          <div class="ptop">
+            <h3>The Career Deer</h3>
+            <span class="arrow"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M4 13L13 4M13 4H6M13 4v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p>A full-stack remote job board built from scratch, featuring user accounts, saved postings, and company pages. Listings are pulled from the Remotive API, and users can securely log in and save listings using a Firestore backend accessed over REST. Developed as my senior software project at EMU.</p>
+          <div class="tags"><span>JavaScript</span><span>Node.js</span><span>Express</span><span>Firestore</span></div>
+          <div class="links"><a href="https://thecareerdeer.com" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/TheCareerDeer/TheCareerDeer.github.io" target="_blank" rel="noopener">Repository ↗</a></div>
+        </article>
+
+        <article class="card reveal" data-href="https://github.com/GarrettHaines/santas-overnight-delivery">
+          <div class="ptop">
+            <h3>Santa's Overnight Delivery</h3>
+            <span class="arrow"><svg width="17" height="17" viewBox="0 0 17 17" fill="none"><path d="M4 13L13 4M13 4H6M13 4v7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+          <p>A 2D arcade game built in Java using Swing with a classmate at Eastern Michigan University. Play as Santa, dodging obstacles to deliver as many presents as possible before the night ends while chasing a high score. A fun project that focused on core game mechanics and responsive input handling</p>
+          <div class="tags"><span>Java</span><span>Game dev</span><span>Collaboration</span></div>
+          <div class="links"><a href="https://github.com/GarrettHaines/santas-overnight-delivery" target="_blank" rel="noopener">Repository ↗</a></div>
+        </article>
+      </div>
+
+      <p style="margin-top:26px;font-size:14.5px;color:var(--muted);" class="reveal">
+        More on <a href="https://github.com/GarrettHaines" target="_blank" rel="noopener" style="color:var(--orange-deep);text-decoration:none;border-bottom:1px solid rgba(156,52,19,.3);">github.com/GarrettHaines</a>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills-and-credentials" class="section-alt">
+    <div class="wrap">
+      <div class="sec-label"><span class="sec-num">04</span>&nbsp;/&nbsp;Skills &amp; Credentials</div>
+      <h2 class="lead-h2 reveal">Translating complex technical challenges into reliable, scalable solutions using a broad skillset.</h2>
+
+      <div class="skills-grid">
+        <div class="skill-row reveal">
+          <div class="sk">Languages</div>
+          <div class="chips"><span>Python</span><span>Java</span><span>JavaScript</span><span>TypeScript</span><span>C++</span><span>C# / .NET</span><span>PHP</span><span>PowerShell</span><span>Bash</span><span>SQL</span></div>
+        </div>
+        <div class="skill-row reveal">
+          <div class="sk">Web &amp; front-end</div>
+          <div class="chips"><span>Node.js</span><span>React</span><span>Vue</span><span>Angular</span><span>Express</span><span>Tailwind CSS</span><span>Next.js</span><span>Webpack</span><span>HTML / CSS</span></div>
+        </div>
+        <div class="skill-row reveal">
+          <div class="sk">Cloud &amp; infrastructure</div>
+          <div class="chips"><span>AWS</span><span>Microsoft Azure</span><span>Kubernetes</span><span>OpenShift</span></span><span>Docker</span><span>VMware</span><span>Helm</span><span>Linux</span></div>
+        </div>
+        <div class="skill-row reveal">
+          <div class="sk">Automation &amp; CI/CD</div>
+          <div class="chips"><span>PowerShell</span><span>Infra-as-code (IaC)</span><span>Config-as-code (CaC)</span><span>REST APIs</span><span>CI/CD pipelines</span><span>Ansible</span><span>Jenkins</span></div>
+        </div>
+        <div class="skill-row reveal">
+          <div class="sk">Observability</div>
+          <div class="chips"><span>Dynatrace</span><span>OpenTelemetry</span><span>Distributed tracing</span><span>Real-user monitoring</span><span>Synthetic monitoring</span><span>Log management</span></div>
+        </div>
+        <div class="skill-row reveal">
+          <div class="sk">Databases</div>
+          <div class="chips"><span>DynamoDB</span><span>MongoDB</span><span>DocumentDB</span><span>Firestore</span><span>Amazon RDS & Aurora</span><span>MySQL</span><span>PostgreSQL</span><span>MariaDB</span></div>
+        </div>
+      </div>
+
+      <div style="margin-top:54px;">
+        <div class="sec-label" style="margin-bottom:20px;"><span class="sec-num">·</span>&nbsp;Certifications</div>
+        <div class="cert-grid">
+          <div class="cert reveal">
+            <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+            <div>
+              <h3>AWS Certified Solutions Architect</h3>
+              <p>Associate (SAA-C03) · 2026 · <a href="https://cp.certmetrics.com/amazon/en/public/verify/credential/b5d6e20b7f1a403a8e9fbe57962aab4b">Verify</a></p>
+            </div>
+          </div>
+          <div class="cert reveal">
+            <div class="seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+            <div>
+              <h3>Dynatrace Certified Professional</h3>
+              <p>Platform certification · 2025 · <a href="/dynatrace-professional-certs.zip">Verify</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:48px;">
+        <div class="sec-label" style="margin-bottom:20px;"><span class="sec-num">·</span>&nbsp;Education</div>
+        <div class="edu edu-card reveal">
+          <div class="seal edu-seal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg></div>
+          <div class="edu-content">
+            <div class="edu-deg-block">
+              <div class="ed-deg">B.S. Computer Science</div>
+              <div class="ed-sub">Minor in Computer Information Systems</div>
+            </div>
+            <div class="edu-right">
+              <div class="ed-school">Eastern Michigan University</div>
+              <div class="ed-yr">2022</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-label"><span class="sec-num">05</span>&nbsp;/&nbsp;Contact</div>
+      <div class="contact-inner">
+        <div class="reveal">
+          <h2 class="contact">Get in touch with me.</h2>
+          <p class="csub">Feel free to reach out to me with any questions, opportunities, product suggestions and issues, or anything else!</p>
+        </div>
+        <div class="contact-links reveal">
+          <a class="clink" href="mailto:garrett@garretthaines.info">
+            <span class="cl-k">Email</span>
+            <span class="cl-v">garrett@garretthaines.info</span>
+            <span class="arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a class="clink" href="mailto:garrett.haines@dynatrace.com">
+            <span class="cl-k">Dynatrace</span>
+            <span class="cl-v">garrett.haines@dynatrace.com</span>
+            <span class="arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a class="clink" href="https://github.com/GarrettHaines" target="_blank" rel="noopener">
+            <span class="cl-k">GitHub</span>
+            <span class="cl-v">github.com/GarrettHaines</span>
+            <span class="arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+          <a class="clink" href="https://linkedin.com/in/garretthaines" target="_blank" rel="noopener">
+            <span class="cl-k">LinkedIn</span>
+            <span class="cl-v">linkedin.com/in/garretthaines</span>
+            <span class="arrow"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="fb">Garrett Haines</div>
+    <div class="fc">© <span id="yr"></span> · Salem, Oregon · Built and deployed from scratch</div>
+    <a class="to-top" href="#top">Back to top
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M6 10V2M2 6l4-4 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // nav: shadow on scroll
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll(); window.addEventListener('scroll', onScroll, {passive:true});
+
+  // brand in nav: hidden over the hero, fades in once you scroll past the hero name
+  const brand = document.querySelector('.brand');
+  const heroName = document.querySelector('.hero h1');
+  if (brand && heroName) {
+    new IntersectionObserver((entries) => {
+      entries.forEach(e => brand.classList.toggle('brand-hidden', e.isIntersecting));
+    }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(heroName);
+  }
+
+  // mobile menu
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }));
+
+  // scrollspy
+  const navAnchors = [...document.querySelectorAll('nav.links a')];
+  const sections = navAnchors.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navAnchors.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(s => spy.observe(s));
+
+  // reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const ro = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} });
+  }, {rootMargin:'0px 0px -8% 0px', threshold:0.08});
+  reveals.forEach(r => ro.observe(r));
+
+  // make project cards clickable without nesting links (valid HTML)
+  document.querySelectorAll('.card[data-href]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;            // let real links do their thing
+      window.open(card.dataset.href, '_blank', 'noopener');
+    });
+  });
+
+  // portrait fallback: try local file, then live site, then monogram
+  const pImg = document.getElementById('portraitImg');
+  const pBox = document.getElementById('portrait');
+  let triedRemote = false;
+  pImg.addEventListener('error', () => {
+    if (!triedRemote) { triedRemote = true; pImg.src = 'https://garretthaines.info/Moi.jpg'; }
+    else { pBox.classList.add('is-missing'); }
+  });
+</script>
 </body>
+</html>
