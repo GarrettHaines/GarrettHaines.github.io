@@ -125,11 +125,10 @@
     nav.links{
       position:fixed;inset:0 0 auto 0;top:0;background:var(--paper);
       flex-direction:column;align-items:flex-start;gap:6px;
-      padding:88px 28px 30px;border-bottom:1px solid var(--line);
+      padding:88px 28px 30px;
       transform:translateY(-100%);transition:transform .38s var(--ease);
-      box-shadow:0 24px 50px -28px rgba(40,30,20,.28);
     }
-    nav.links.open{transform:translateY(0);}
+    nav.links.open{transform:translateY(0);border-bottom:1px solid var(--line);box-shadow:0 24px 50px -28px rgba(40,30,20,.28);}
     nav.links a{font-size:20px;font-family:"Fraunces",serif;color:var(--ink);padding:10px 0;width:100%;}
     nav.links a::after{display:none;}
     .nav-toggle{display:inline-flex;z-index:70;}
@@ -372,6 +371,12 @@
   .foot-inner .fb{font-family:"Fraunces",serif;font-size:17px;font-weight:540;}
   .to-top{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);text-decoration:none;display:inline-flex;align-items:center;gap:8px;}
   .to-top:hover{color:var(--orange-deep);}
+  @media (max-width:600px){
+    .foot-inner{gap:10px 14px;}
+    .foot-inner .fb{order:1;}
+    .foot-inner .to-top{order:2;margin-left:auto;}
+    .foot-inner .fc{order:3;flex-basis:100%;}
+  }
 
   /* reveal */
   .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
@@ -698,6 +703,15 @@
       entries.forEach(e => brand.classList.toggle('brand-hidden', e.isIntersecting));
     }, { rootMargin: '-64px 0px 0px 0px', threshold: 0 }).observe(heroName);
   }
+
+  // back-to-top & logo: always scroll to the true top of the page
+  document.querySelectorAll('a[href="#top"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', location.pathname + location.search);
+    });
+  });
 
   // mobile menu
   const toggle = document.getElementById('navToggle');
